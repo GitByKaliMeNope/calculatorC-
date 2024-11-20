@@ -7,17 +7,17 @@ class Program
     {
         Application.Init();
 
-        // Erstelle ein Fenster
+       
         var window = new Window("Taschenrechner");
         window.SetDefaultSize(250, 200);
         window.DeleteEvent += (sender, e) => Application.Quit();
 
-        // Erstelle ein vertikales Layout für das Display und die Buttons
+        
         var vbox = new VBox();
         var entry = new Entry();
         vbox.PackStart(entry, true, true, 10);
 
-        // Definiere die Buttons
+       
         var button1 = new Button("1");
         var button2 = new Button("2");
         var button3 = new Button("3");
@@ -37,7 +37,7 @@ class Program
         var buttonEqual = new Button("=");
         var buttonClear = new Button("C");
 
-        // Setze die Buttons-Logik
+        
         button1.Clicked += (sender, e) => entry.Text += "1";
         button2.Clicked += (sender, e) => entry.Text += "2";
         button3.Clicked += (sender, e) => entry.Text += "3";
@@ -49,7 +49,7 @@ class Program
         button9.Clicked += (sender, e) => entry.Text += "9";
         button0.Clicked += (sender, e) => entry.Text += "0";
 
-        // Speichern der Eingabeoperation
+       
         double result = 0;
         string currentOperation = "";
 
@@ -77,7 +77,7 @@ class Program
             entry.Text = "";
         };
 
-        // Berechnung des Ergebnisses
+       
         buttonEqual.Clicked += (sender, e) => {
             double secondOperand = double.Parse(entry.Text);
             switch (currentOperation)
@@ -106,10 +106,10 @@ class Program
             entry.Text = result.ToString();
         };
 
-        // Löschen der Eingabe
+       
         buttonClear.Clicked += (sender, e) => entry.Text = "";
 
-        // Layout der Buttons
+        
         var grid = new Grid();
         grid.Attach(button1, 0, 0, 1, 1);
         grid.Attach(button2, 1, 0, 1, 1);
@@ -128,11 +128,11 @@ class Program
         grid.Attach(buttonEqual, 2, 3, 1, 1);
         grid.Attach(buttonClear, 0, 3, 1, 1);
 
-        // Füge das Grid zum Fenster hinzu
+        
         vbox.PackStart(grid, true, true, 10);
         window.Add(vbox);
 
-        // Zeige das Fenster an
+        
         window.ShowAll();
         Application.Run();
     }
